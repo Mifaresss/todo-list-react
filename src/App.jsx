@@ -11,7 +11,7 @@ function App(props) {
    const [checked, setChecked] = useState('all');
 
    const addTodo = e => {
-      if (e.key === 'Enter' && todo.trim() !== '') {
+      if ((e.key === 'Enter' || e.target.className === 'todo__add-button') && todo.trim() !== '') {
          const newTodo = { title: todo, id: Math.random(), isDone: false };
          setTodos([...todos, newTodo]);
          setTodo('');
@@ -63,7 +63,7 @@ function App(props) {
       <div className='wrapper'>
          <Filter changingDisplayedTodos={changingDisplayedTodos} checked={checked} />
          <div className='todo'>
-            <MyInput value={todo} onChange={setTodo} onKeyUp={addTodo} />
+            <MyInput value={todo} onChange={setTodo} addTodo={addTodo} />
             <ul className='todo__list'>{todosItems}</ul>
          </div>
          <div className='wave wave1'></div>
