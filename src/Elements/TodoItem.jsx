@@ -1,7 +1,9 @@
-export function TodoItem(props) {
+import { forwardRef } from 'react';
+
+export const TodoItem = forwardRef(function TodoItem(props, ref) {
    return (
-      <li className='todo__item'>
-         <span>{props.title}</span>
+      <li ref={ref} className='todo__item'>
+         <p className='todo__body'>{props.title}</p>
          <div className='todo__wrapper-buttons'>
             <label
                htmlFor={props.id}
@@ -23,4 +25,4 @@ export function TodoItem(props) {
          </div>
       </li>
    );
-}
+});

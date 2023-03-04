@@ -73,7 +73,7 @@ h6 {
    --border-shadow-color: rgba(130, 69, 0, 0.6);
    --border-outline-color: rgba(64, 42, 0, 0.2);
 
-   --hover-color: rgba(122, 80, 7, 0.118);
+   --hover-color: rgba(206, 169, 95, 0.7);
 
    --placeholder-color: rgba(48, 26, 0, 0.45);
 }
@@ -115,6 +115,7 @@ body {
    display: flex;
    justify-content: center;
    cursor: pointer;
+   transition: all .200s;
 }
 .filter__button:has(.filter__radio-input:checked) {
    outline: 4px solid var(--border-outline-color);
@@ -166,6 +167,10 @@ body {
    border: 2px solid var(--border-color);
    border-radius: 5px;
    padding: 0 8px;
+   transition: all .200s;
+}
+.todo__add-button:hover {
+   background-color: var(--hover-color);
 }
 .todo__list {
    display: flex;
@@ -207,6 +212,7 @@ body {
    border: 4px dashed var(--border-color);
    border-radius: 5px;
    background-color: var(--main-background-color);
+   list-style: none;
 }
 .todo__item:has(input:checked) span {
    text-decoration: line-through;
@@ -215,6 +221,10 @@ body {
    display: flex;
    gap: 7px;
    text-decoration: none;
+}
+.todo__body {
+   max-width: 60%;
+   overflow-wrap: break-word;
 }
 .todo__button {
    border-radius: 5px;
@@ -225,6 +235,7 @@ body {
    color: rgb(4, 132, 32);
    color: rgb(179, 100, 4);
    background-color: rgba(16, 194, 60, 0.382);
+   transition: all .3s;
 }
 .todo__done-checkbox {
    appearance: none;
@@ -345,5 +356,22 @@ body {
       transform: translateY(-1000px) rotate(720deg);
       opacity: 0;
       border-radius: 50%;
+   }
+}
+
+/* ======================== Animation ======================== */
+.todo__item-enter-active {
+   animation: todoItem 300ms forwards;
+}
+.todo__item-exit-active {
+   animation: todoItem 300ms reverse;
+}
+
+@keyframes todoItem {
+   0% {
+      transform: translate(-400px);
+   }
+   100% {
+      transform: translate(0px);
    }
 }

@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import './App.css';
 import { Filter } from './Elements/Filter';
 import { MyInput } from './Elements/MyInput';
-import { NoTask } from './Elements/NoTask';
 import { TodoItem } from './Elements/TodoItem';
 
 function App(props) {
    const [todo, setTodo] = useState('');
-   const [todos, setTodos] = useState(props.state.initTodos);
+   const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')) || props.state.initTodos);
    const [checked, setChecked] = useState('all');
+   localStorage.setItem('todos', JSON.stringify(todos));
 
    const addTodo = e => {
       if ((e.key === 'Enter' || e.target.className === 'todo__add-button') && todo.trim() !== '') {
          const newTodo = { title: todo, id: Math.random(), isDone: false };
-         setTodos([...todos, newTodo]);
+         setTodos([newTodo, ...todos]);
          setTodo('');
       }
    };
@@ -21,7 +22,6 @@ function App(props) {
    const deleteTodo = id => setTodos(todos.filter(todo => todo.id !== id));
 
    const markDoneTodo = (e, id) => {
-      console.log(e.target);
       setTodos(
          todos.map(item => {
             if (item.id === id) item.isDone = !item.isDone;
@@ -43,33 +43,21 @@ function App(props) {
       }
    });
 
-   const todosItems =
-      filteredTodos.length !== 0 ? (
-         filteredTodos.map(todo => (
-            <TodoItem
-               title={todo.title}
-               key={todo.id}
-               id={todo.id}
-               deleteTodo={deleteTodo}
-               markDoneTodo={markDoneTodo}
-               isDone={todo.isDone}
-            />
-         ))
-      ) : (
-         <NoTask />
-      );
+   const todosItems = filteredTodos.map(todo => (
+      <CSSTransition key={todo.id} timeout={300} classNames='todo__item'>
+         <TodoItem title={todo.title} id={todo.id} deleteTodo={deleteTodo} markDoneTodo={markDoneTodo} isDone={todo.isDone} />
+      </CSSTransition>
+   ));
 
    return (
       <div className='wrapper'>
          <Filter changingDisplayedTodos={changingDisplayedTodos} checked={checked} />
          <div className='todo'>
             <MyInput value={todo} onChange={setTodo} addTodo={addTodo} />
-            <ul className='todo__list'>{todosItems}</ul>
+            <TransitionGroup component={'ul'} className='todo__list'>
+               {todosItems}
+            </TransitionGroup>
          </div>
-         <div className='wave wave1'></div>
-         <div className='wave wave2'></div>
-         <div className='wave wave3'></div>
-         <div className='wave wave4'></div>
          <ul className='circles'>
             <li></li>
             <li></li>
