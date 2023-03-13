@@ -1,0 +1,98 @@
+:root {
+   --body-background-color: linear-gradient(to left, #ebfb8f, #c8834e);
+   --main-background-color: rgba(200, 150, 64, 0.8);
+   --hover-color: rgba(206, 169, 95, 0.7);
+
+   --border-color: rgb(133, 77, 13);
+   --border-shadow-color: rgba(130, 69, 0, 0.6);
+   --border-outline-color: rgba(64, 42, 0, 0.2);
+
+   --main-text-color: rgb(72, 41, 4);
+   --placeholder-color: rgba(48, 26, 0, 0.45);
+
+   --done-button-background-color: rgba(105, 176, 30, 0.7);
+   --done-button-text-color: rgb(4, 132, 32);
+   --undone-button-background-color: rgb(255, 165, 0);
+   --undone-button-text-color: rgb(179, 100, 4);
+
+   --modal-color: rgb(250, 203, 149);
+
+   /* --body-background-color: linear-gradient(to left, #db8ffb, #4ebcc8);
+   --main-background-color: rgba(54, 137, 175, 0.384);
+   --hover-color: rgba(95, 167, 206, 0.7);
+
+   --border-color: rgb(13, 131, 133);
+   --border-shadow-color: rgba(0, 82, 130, 0.6);
+   --border-outline-color: rgba(0, 42, 64, 0.2);
+
+   --main-text-color: rgb(1, 24, 73);
+   --placeholder-color: rgba(0, 34, 48, 0.45);
+
+   --done-button-background-color: rgb(13, 188, 112);
+   --done-button-text-color: rgb(1, 116, 35);
+   --undone-button-background-color: rgb(186, 152, 2);
+   --undone-button-text-color: rgb(71, 51, 0);
+
+   --modal-color: rgb(180, 250, 251); */
+}
+
+body {
+   color: var(--main-text-color);
+   background: var(--body-background-color);
+   font-size: 18px;
+   line-height: 1.2;
+   font-family: 'Montserrat';
+   overflow-x: hidden;
+}
+
+#root {
+   padding-top: 100px;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.wrapper {
+   /* margin: 100px auto; */
+   max-width: 500px;
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   padding: 0 15px;
+}
+
+.todo__list {
+   display: flex;
+   flex-direction: column;
+   gap: 7px;
+   margin-top: 20px;
+   max-height: 350px;
+   overflow-y: scroll;
+   overflow-x: hidden;
+   padding: 0 6px 0 0;
+}
+.todo__list::-webkit-scrollbar {
+   width: 15px;
+}
+.todo__list::-webkit-scrollbar-track {
+   background-color: var(--main-background-color);
+   border-radius: 5px;
+}
+.todo__list::-webkit-scrollbar-thumb {
+   background-color: var(--border-shadow-color);
+   border-radius: 5px;
+}
+
+.todoNotFound {
+   font-size: 24px;
+   text-align: center;
+   max-width: 250px;
+   width: 100%;
+   margin: 0 auto;
+   padding: 20px 0;
+   border: 4px dashed var(--border-color);
+   border-radius: 5px;
+   background-color: var(--main-background-color);
+   list-style: none;
+}

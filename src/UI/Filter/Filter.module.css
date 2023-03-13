@@ -1,0 +1,44 @@
+.filter {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   gap: calc(10px + 10 * ((100vw - 320px) / (1700 - 320)));;
+}
+.filterButton {
+   flex: 1 1 auto;
+   max-width: 25%;
+   background-color: var(--main-background-color);
+   border-radius: 5px;
+   padding: 8px 0;
+   border: 1.5px solid var(--border-color);
+   color: inherit;
+   box-shadow: 0px 0px 3px var(--border-shadow-color);
+   display: flex;
+   justify-content: center;
+   cursor: pointer;
+   transition: all .200s;
+}
+.filterButton:has(.filterRadioInput:checked) {
+   outline: 4px solid var(--border-outline-color);
+   background-color: var(--hover-color);
+}
+.filterButton:hover {
+   background-color: var(--hover-color);
+}
+.filterButtonCompleted {
+   max-width: 33%;
+   min-width: 85px;
+}
+.filterRadioInput {
+   appearance: none;
+   width: 0;
+   height: 0;
+   position: absolute;
+}
+
+@media (max-width: 500px) {
+   .filterButton {
+      font-size: 14px;
+   }
+}

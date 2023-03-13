@@ -1,0 +1,36 @@
+.mainLabel {
+   width: 100%;
+   position: relative;
+   display: flex;
+   align-items: center;
+}
+.mainInput {
+   width: 100%;
+   background-color: var(--main-background-color);
+   border-radius: 5px;
+   padding: 10px 55px 10px 10px;
+   border: 2px solid var(--border-color);
+   color: inherit;
+   font-size: 20px;
+   box-shadow: 0px 0px 7px var(--border-shadow-color);
+}
+.mainInput::placeholder {
+   color: var(--placeholder-color);
+}
+.addButton {
+   color: var(--main-text-color);
+   font-size: 24px;
+   width: 33px;
+   height: 33px;
+   background-color: transparent;
+   border: 2px solid var(--border-color);
+   border-radius: 5px;
+   transition: all 0.2s;
+   margin-left: -42px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.addButton:hover {
+   background-color: var(--hover-color);
+}
